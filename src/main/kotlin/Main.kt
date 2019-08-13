@@ -31,14 +31,11 @@ fun main(args: Array<String>) {
         c++
         article as JSONObject
         var embedJson = JSONObject()
-        embedJson.put(
-            "author",
-            JSONObject().put("name", if (article.isNull("author")) "n/a" else article.getString("author"))
-        )
         embedJson.put("title", article.getString("title"))
         embedJson.put("url", article.getString("url"))
         embedJson.put("description", article.getString("description"))
         embedJson.put("thumbnail", JSONObject().put("url", article.getString("urlToImage")))
+        embedJson.put("timestamp",article.getString("publishedAt"))
         embedsJson.put(embedJson)
         if(c%10==0){
             for(webhookUrl in config.webhookUrls){
@@ -56,8 +53,8 @@ fun main(args: Array<String>) {
 }
 
 fun pushToChat(embeds:JSONArray, webhookUrl:String) {
-    println(embeds)
     val jsonReq = JSONObject().put("embeds", embeds)
+    jsonReq.put("username","nugsky's slave")
     val url = URL(webhookUrl)
     val connection = url.openConnection() as HttpURLConnection
     connection.requestMethod = "POST"
