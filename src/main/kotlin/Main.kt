@@ -54,7 +54,6 @@ fun main(args: Array<String>) {
 
 fun pushToChat(embeds:JSONArray, webhookUrl:String) {
     val jsonReq = JSONObject().put("embeds", embeds)
-    jsonReq.put("username","nugsky's slave")
     val url = URL(webhookUrl)
     val connection = url.openConnection() as HttpURLConnection
     connection.requestMethod = "POST"
