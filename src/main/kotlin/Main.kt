@@ -60,6 +60,7 @@ fun pushToChat(embeds:JSONArray, webhookUrl:String) {
     connection.connectTimeout = 300000
     connection.doOutput = true
 
+    jsonReq.put("content","KORAN KORAN!\nAmbil ini, tambahlah ilmu pengetahuan")
 
     val postData: ByteArray = jsonReq.toString().toByteArray(Charsets.UTF_8)
 
