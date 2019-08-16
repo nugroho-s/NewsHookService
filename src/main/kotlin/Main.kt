@@ -17,6 +17,7 @@ fun main(args: Array<String>) {
         println("should provide 1 argument which is the name of file contains config represents {@link com.nugsky.Config}")
         System.exit(1)
     }
+    println("run at ${Date()}")
     val gson = Gson()
     val jsonReader = JsonReader(FileReader(args[0]))
     val config:Config = gson.fromJson(jsonReader,Config::class.java)
